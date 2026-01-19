@@ -1111,9 +1111,9 @@ function Footer() {
           </div>
 
           <div className="flex items-center gap-6 text-sm text-cream/60">
-            <a href="#" className="hover:text-cream transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-cream transition-colors">Terms</a>
-            <a href="#" className="hover:text-cream transition-colors">Careers</a>
+            <a href="https://www.goodimpressionsmedia.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Privacy Policy</a>
+            <a href="https://www.goodimpressionsmedia.com/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Terms</a>
+            <a href="https://www.goodimpressionsmedia.com/careers" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Careers</a>
           </div>
 
           <p className="text-sm text-cream/40">
