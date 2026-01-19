@@ -259,6 +259,62 @@ function Hero() {
   )
 }
 
+// Founder/Mission Section
+function Mission() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  return (
+    <section ref={ref} className="py-20 sm:py-28 px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Text content */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium text-ink mb-6 leading-tight">
+              Impact requires <span className="italic text-terracotta">engagement</span>.
+            </h2>
+            <p className="text-slate text-lg leading-relaxed mb-6">
+              Outreach is the limiting factor for so many mission-driven organizations. Their programs 
+              aren't full of the right people, their research isn't getting in front of decision makers, 
+              or they can't get their intervention into the hands of the right users.
+            </p>
+            <p className="text-slate text-lg leading-relaxed">
+              We're trying to change that.
+            </p>
+          </motion.div>
+
+          {/* Founder card */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col items-center md:items-start"
+          >
+            <div className="relative">
+              <img 
+                src="/images/avatars/founder.webp" 
+                alt="Johnstuart Winchell" 
+                className="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl object-cover shadow-xl"
+              />
+              <div className="absolute -bottom-4 -right-4 bg-terracotta text-cream px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                Founder
+              </div>
+            </div>
+            <div className="mt-8 text-center md:text-left">
+              <h3 className="font-display text-2xl font-medium text-ink">Johnstuart Winchell</h3>
+              <p className="text-slate mt-1">Founder, Good Impressions</p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // Services Section
 function Services() {
   const ref = useRef(null)
@@ -369,28 +425,60 @@ function Results() {
       description: 'AI safety course participants recruited from frontier AI companies, FAANG, and top research organizations',
       cost: '$261 each',
       client: 'BlueDot Impact',
-      logo: '/images/logos/bluedot-impact.webp'
+      logo: '/images/logos/bluedot-impact.webp',
+      quote: "Since working with Good Impressions, we have recruited participants from orgs like OpenAI, WHO, and Meta; scaled from one test campaign to three continuously running campaigns.",
+      author: 'Li-Lian Ang',
+      role: 'Product Manager'
     },
     {
       metric: '99%',
-      description: 'Cost reduction for animal cruelty whistleblower recruitment',
+      description: 'Cost reduction: $706 per animal cruelty whistleblower vs. $100,000 for traditional investigations',
       cost: '$706 vs $100,000',
       client: 'Legal Impact for Chickens',
-      logo: '/images/logos/lic.webp'
+      logo: '/images/logos/lic.webp',
+      quote: "Good Impressions successfully recruited several factory-farming whistleblowers. Best of all, they did it at 1% of the cost of the method we normally use.",
+      author: 'Alene Anello',
+      role: 'Founder'
+    },
+    {
+      metric: '€10K+',
+      description: 'Saved by identifying non-counterfactual ad spend with a 3-hour audit',
+      cost: '3-hour audit',
+      client: 'Effective Giving',
+      logo: '/images/logos/give-directly.webp',
+      quote: "Your help here was immensely valuable. You potentially saved us 10s of thousands of Euros.",
+      author: 'Sebastian Becker',
+      role: 'Fund Manager'
+    },
+    {
+      metric: '2-3x',
+      description: 'Social media followers increase, reaching people at top AI companies, governmental bodies, and think tanks',
+      cost: 'Small budget',
+      client: 'Epoch AI',
+      logo: '/images/logos/epoch-ai.webp',
+      quote: "Good Impressions managed to increase our social media followers by 2-3x on a small budget, and I was impressed with the quality of the people reached.",
+      author: 'Jaime Sevilla',
+      role: 'Director'
+    },
+    {
+      metric: '31',
+      description: 'Senior-level leads from 10 leading DNA synthesis companies for biosecurity regulatory compliance',
+      cost: '$113 each',
+      client: 'SecureDNA',
+      logo: '/images/logos/logo-05.webp',
+      quote: "The campaign reached senior contacts at major synthesis companies globally, including the CTO of Macrogen and CEO of Microsynth.",
+      author: 'Kirsten Engel',
+      role: 'Strategic Partnerships'
     },
     {
       metric: '1,268',
-      description: 'Course registrants for healthcare training program',
+      description: "Registrants for HealthLearn's Newborn Care Foundations course",
       cost: '$0.22 each',
       client: 'HealthLearn',
-      logo: '/images/logos/healthlearn.webp'
-    },
-    {
-      metric: '3x',
-      description: 'Growth rate increase for newsletter subscribers who open emails at higher rates than organic',
-      cost: 'Small budget',
-      client: 'Asimov Press',
-      logo: '/images/logos/asimov-press.webp'
+      logo: '/images/logos/healthlearn.webp',
+      quote: "Advertising is looking like a promising channel to scale our impact. We're immediately scaling up with a second, larger campaign.",
+      author: 'Karl Keefer',
+      role: 'Director of Technology'
     },
   ]
 
@@ -411,33 +499,35 @@ function Results() {
         </motion.div>
 
         {/* Results grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {results.map((result, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group p-8 sm:p-10 rounded-3xl bg-white border border-ink/10 hover-lift"
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group p-6 sm:p-8 rounded-2xl bg-white border border-ink/10 hover-lift flex flex-col"
             >
-              <div className="flex items-start justify-between mb-6 gap-4">
-                <div>
-                  <span className="font-display text-5xl sm:text-6xl font-semibold text-terracotta">
-                    {result.metric}
-                  </span>
-                </div>
+              <div className="flex items-start justify-between mb-4 gap-4">
+                <span className="font-display text-4xl sm:text-5xl font-semibold text-terracotta">
+                  {result.metric}
+                </span>
                 <img 
                   src={result.logo} 
                   alt={result.client}
-                  className="h-10 max-w-[120px] object-contain"
+                  className="h-8 max-w-[100px] object-contain"
                 />
               </div>
-              <p className="text-ink text-lg mb-4 leading-relaxed">{result.description}</p>
-              <div className="flex items-center gap-2 text-sage font-medium">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                {result.cost}
+              <p className="text-ink font-medium mb-3 leading-snug">{result.description}</p>
+              <p className="text-slate text-sm italic mb-4 flex-grow">"{result.quote}"</p>
+              <div className="flex items-center justify-between pt-4 border-t border-ink/10">
+                <div className="text-sm">
+                  <span className="font-medium text-ink">{result.author}</span>
+                  <span className="text-slate"> · {result.role}</span>
+                </div>
+                <span className="text-xs bg-sage/20 text-sage px-2 py-1 rounded-full font-medium">
+                  {result.cost}
+                </span>
               </div>
             </motion.div>
           ))}
@@ -532,36 +622,81 @@ function Testimonials() {
 
   const testimonials = [
     {
-      quote: "Good Impressions is as good as it gets. They helped us develop a targeted LinkedIn whistleblower recruitment campaign which connected us with dozens of employees as part of an advocacy campaign.",
+      quote: "Good Impressions is as good as it gets.",
       author: "Jonas Vollmer",
       role: "COO",
       org: "Longview Philanthropy",
-      avatar: "/images/avatars/avatar-01.webp",
-      logo: "/images/logos/longview.webp"
+      avatar: "/images/avatars/avatar-01.webp"
     },
     {
-      quote: "In a few months Good Impressions helped us build an acquisition channel we can turn on and off as needed, giving us control over our growth. This has become a permanent part of our funding proposals.",
+      quote: "I've been campaigning for 11 years and Good Impressions has shown me techniques I haven't seen anywhere else. We're now using these detailed workplace accounts to build a media report and actively pitch the stories to journalists.",
+      author: "Taylor Warren",
+      role: "President",
+      org: "Animal Outlook",
+      avatar: "/images/avatars/avatar-02.webp"
+    },
+    {
+      quote: "Good Impressions delivered 924 course completions at just $0.94 per completion—well below our $2 goal. Digital advertising has become a key channel for us now, driving more than half of our total course completions.",
+      author: "Marshall Thomas",
+      role: "Executive Director",
+      org: "HealthLearn",
+      avatar: "/images/avatars/avatar-03.webp"
+    },
+    {
+      quote: "In a few months Good Impressions helped us build an acquisition channel we can turn on and off as needed, giving us control over our growth. This has become a permanent part of our funding proposals and fundamentally shifted how we think about growth.",
       author: "Patrick Gruban",
       role: "COO",
       org: "80,000 Hours",
-      avatar: "/images/avatars/avatar-02.webp",
-      logo: "/images/logos/80000-hours.png"
+      avatar: "/images/avatars/avatar-04.webp"
+    },
+    {
+      quote: "Since the pandemic, we hadn't found a sustainable avenue for opening new MBA chapters, but our first Good Impressions campaign led to 7 new chapters, with an ROI between 14 and 45x. Ads are now our primary channel for chapter acquisition.",
+      author: "Emma Cameron",
+      role: "COO",
+      org: "One for the World",
+      avatar: "/images/avatars/avatar-05.webp"
+    },
+    {
+      quote: "We really appreciate the support a lot. Timely, professional, value adding and always very thoughtful and constructive. It's been worth at least six figures.",
+      author: "Anne Shulze",
+      role: "Managing Director",
+      org: "Founders Pledge",
+      avatar: "/images/avatars/avatar-06.webp"
+    },
+    {
+      quote: "I'm really excited about Good Impressions' potential to multiply the impact of some of the most effective ways of helping factory farmed animals.",
+      author: "Lewis Bollard",
+      role: "Program Director",
+      org: "Open Philanthropy",
+      avatar: "/images/avatars/avatar-07.webp"
     },
     {
       quote: "To spend such a small amount of money and grow this rapidly is incredible. We tripled our growth rate of newsletter subscribers, and they actually open our emails at rates higher than our organic audience.",
       author: "Niko McCarty",
       role: "Founding Editor",
       org: "Asimov Press",
-      avatar: "/images/avatars/avatar-03.webp",
-      logo: "/images/logos/asimov-press.webp"
+      avatar: "/images/avatars/avatar-08.webp"
     },
     {
-      quote: "Since the pandemic, we hadn't found a sustainable avenue for opening new chapters, but our first Good Impressions campaign led to 7 new chapters. Ads are now our primary channel for chapter acquisition.",
-      author: "Emma Cameron",
+      quote: "Good Impressions demonstrated strong communication, clear subject matter expertise, and an ability to adapt to my preferred style of working. They added massive value and capacity to our lean team during our busiest time of the year.",
+      author: "Kayla Fishman",
+      role: "Head of Growth",
+      org: "GiveDirectly",
+      avatar: "/images/avatars/avatar-09.webp"
+    },
+    {
+      quote: "The newsletter program that Good Impressions put together for us is generating ~2K subscriptions a month, with an open rate 50% higher than our organic subscribers. Honestly we just wouldn't have done these projects without them.",
+      author: "Bri Treece",
       role: "COO",
-      org: "One for the World",
-      avatar: "/images/avatars/avatar-04.webp",
-      logo: "/images/logos/one-for-the-world.webp"
+      org: "Charity Entrepreneurship",
+      avatar: "/images/avatars/avatar-10.webp"
+    },
+    {
+      quote: "It's honestly no exaggeration to say that your advice meaningfully influenced our primary organizational objective for the year. It's going to have a lasting impact on our mindset and strategy.",
+      author: "Sarah Pomeranz",
+      role: "CEO",
+      org: "Consultants for Impact",
+      avatar: "/images/avatars/sarah-pomeranz.png"
     },
   ]
 
@@ -614,11 +749,6 @@ function Testimonials() {
                     {testimonials[activeIndex].role}, {testimonials[activeIndex].org}
                   </span>
                 </div>
-                <img 
-                  src={testimonials[activeIndex].logo} 
-                  alt={testimonials[activeIndex].org}
-                  className="h-8 max-w-[150px] object-contain invert opacity-70 mt-2"
-                />
               </div>
             </motion.div>
           </AnimatePresence>
@@ -634,6 +764,180 @@ function Testimonials() {
                 i === activeIndex ? 'bg-terracotta w-8' : 'bg-cream/30 hover:bg-cream/50'
               }`}
             />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Service Models Section
+function ServiceModels() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [activeTab, setActiveTab] = useState(0)
+
+  const models = [
+    {
+      name: 'Full service',
+      description: 'We plan, build, optimize, and report on your campaigns end-to-end.',
+      features: ['Campaign strategy & planning', 'Creative development', 'Platform management', 'Performance optimization', 'Detailed reporting']
+    },
+    {
+      name: 'Advisory',
+      description: 'Brainstorming, feedback, and strategic guidance on your marketing challenges.',
+      features: ['Strategy consultation', 'Campaign audits', 'Channel recommendations', 'Performance analysis', 'Team training']
+    },
+    {
+      name: 'Shared resources',
+      description: 'We document and share best practices and lessons learned.',
+      features: ['Practical guides', 'Templates & frameworks', 'Case study breakdowns', 'Industry insights', 'Community access']
+    },
+  ]
+
+  return (
+    <section ref={ref} className="py-24 sm:py-32 px-6 bg-cream">
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <span className="text-sage font-medium tracking-wide uppercase text-sm">How we work</span>
+          <h2 className="font-display text-4xl sm:text-5xl font-medium text-ink mt-4">
+            Our service models
+          </h2>
+        </motion.div>
+
+        {/* Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex justify-center gap-2 mb-8"
+        >
+          {models.map((model, i) => (
+            <button
+              key={model.name}
+              onClick={() => setActiveTab(i)}
+              className={`px-6 py-3 rounded-full font-medium transition-all ${
+                activeTab === i 
+                  ? 'bg-terracotta text-cream' 
+                  : 'bg-white text-ink hover:bg-ink/5'
+              }`}
+            >
+              {model.name}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Tab content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white rounded-3xl p-8 sm:p-12 border border-ink/10"
+          >
+            <h3 className="font-display text-2xl font-medium text-ink mb-4">
+              {models[activeTab].name}
+            </h3>
+            <p className="text-slate text-lg mb-6">
+              {models[activeTab].description}
+            </p>
+            <ul className="grid sm:grid-cols-2 gap-3">
+              {models[activeTab].features.map((feature) => (
+                <li key={feature} className="flex items-center gap-3 text-ink">
+                  <svg className="w-5 h-5 text-sage flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </section>
+  )
+}
+
+// FAQ Section
+function FAQ() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const faqs = [
+    {
+      question: 'How are you funded?',
+      answer: 'We are funded through grants and client fees. We have received grants from Longview Philanthropy and Open Philanthropy.'
+    },
+    {
+      question: 'How much does it cost?',
+      answer: 'Our baseline fee for a three-month project is $15,000. We offer discounted rates when lack of funds would get in the way of impact.'
+    },
+    {
+      question: 'How long is an engagement?',
+      answer: 'Most projects last three months.'
+    },
+  ]
+
+  return (
+    <section ref={ref} className="py-24 sm:py-32 px-6 bg-sage/10">
+      <div className="max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <span className="text-terracotta font-medium tracking-wide uppercase text-sm">Questions</span>
+          <h2 className="font-display text-4xl sm:text-5xl font-medium text-ink mt-4">
+            Frequently asked
+          </h2>
+        </motion.div>
+
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="bg-white rounded-2xl border border-ink/10 overflow-hidden"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                className="w-full px-6 py-5 text-left flex items-center justify-between gap-4"
+              >
+                <span className="font-display text-lg font-medium text-ink">{faq.question}</span>
+                <svg 
+                  className={`w-5 h-5 text-terracotta transition-transform ${openIndex === i ? 'rotate-180' : ''}`} 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <AnimatePresence>
+                {openIndex === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <p className="px-6 pb-5 text-slate leading-relaxed">{faq.answer}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -768,10 +1072,13 @@ function App() {
     <div className="min-h-screen">
       <Navigation />
       <Hero />
+      <Mission />
       <Services />
       <Results />
-      <Approach />
       <Testimonials />
+      <Approach />
+      <ServiceModels />
+      <FAQ />
       <Contact />
       <Footer />
     </div>
