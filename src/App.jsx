@@ -214,8 +214,8 @@ function Hero() {
             transition={{ delay: 1.2 }}
             className="mt-20 pt-12 border-t border-ink/10"
           >
-            <p className="text-slate text-sm uppercase tracking-wider mb-6">Proud to have worked with</p>
-            <div className="flex flex-wrap items-center gap-8">
+            <p className="text-slate text-sm uppercase tracking-wider mb-8">Proud to have worked with</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center">
               {[
                 { name: 'BlueDot Impact', src: '/images/logos/bluedot-impact.webp' },
                 { name: 'Open Philanthropy', src: '/images/logos/open-phil.webp' },
@@ -224,16 +224,19 @@ function Hero() {
                 { name: 'One for the World', src: '/images/logos/one-for-the-world.webp' },
                 { name: '80,000 Hours', src: '/images/logos/80000-hours.png' },
               ].map((logo, i) => (
-                <motion.img
+                <motion.div
                   key={logo.name}
-                  src={logo.src}
-                  alt={logo.name}
                   initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 0.7, y: 0 }}
-                  whileHover={{ opacity: 1 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.3 + i * 0.1 }}
-                  className="h-8 sm:h-10 object-contain grayscale hover:grayscale-0 transition-all"
-                />
+                  className="flex items-center justify-center p-2"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="max-h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                  />
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -420,7 +423,7 @@ function Results() {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="group p-8 sm:p-10 rounded-3xl bg-white border border-ink/10 hover-lift"
             >
-              <div className="flex items-start justify-between mb-6">
+              <div className="flex items-start justify-between mb-6 gap-4">
                 <div>
                   <span className="font-display text-5xl sm:text-6xl font-semibold text-terracotta">
                     {result.metric}
@@ -429,7 +432,7 @@ function Results() {
                 <img 
                   src={result.logo} 
                   alt={result.client}
-                  className="h-8 object-contain opacity-70"
+                  className="h-10 max-w-[120px] object-contain"
                 />
               </div>
               <p className="text-ink text-lg mb-4 leading-relaxed">{result.description}</p>
@@ -617,7 +620,7 @@ function Testimonials() {
                 <img 
                   src={testimonials[activeIndex].logo} 
                   alt={testimonials[activeIndex].org}
-                  className="h-6 object-contain opacity-50 mt-2"
+                  className="h-8 max-w-[150px] object-contain invert opacity-70 mt-2"
                 />
               </div>
             </motion.div>
