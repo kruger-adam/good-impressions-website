@@ -215,29 +215,26 @@ function Hero() {
             className="mt-20 pt-12 border-t border-ink/10"
           >
             <p className="text-slate text-sm uppercase tracking-wider mb-8">Proud to have worked with</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center">
-              {[
-                { name: 'BlueDot Impact', src: '/images/logos/bluedot-impact.webp' },
-                { name: 'Open Philanthropy', src: '/images/logos/open-phil.webp' },
-                { name: 'GiveDirectly', src: '/images/logos/give-directly.webp' },
-                { name: 'Epoch AI', src: '/images/logos/epoch-ai.webp' },
-                { name: 'One for the World', src: '/images/logos/one-for-the-world.webp' },
-                { name: '80,000 Hours', src: '/images/logos/80000-hours.png' },
-              ].map((logo, i) => (
-                <motion.div
-                  key={logo.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.3 + i * 0.1 }}
-                  className="flex items-center justify-center p-2"
-                >
+            <div className="logo-marquee-container overflow-hidden">
+              <div className="logo-marquee flex gap-12 animate-marquee">
+                {[...Array(24)].map((_, i) => (
                   <img
-                    src={logo.src}
-                    alt={logo.name}
-                    className="max-h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    key={i}
+                    src={`/images/logos/logo-${String(i + 1).padStart(2, '0')}.webp`}
+                    alt={`Client ${i + 1}`}
+                    className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity flex-shrink-0"
                   />
-                </motion.div>
-              ))}
+                ))}
+                {/* Duplicate for seamless loop */}
+                {[...Array(24)].map((_, i) => (
+                  <img
+                    key={`dup-${i}`}
+                    src={`/images/logos/logo-${String(i + 1).padStart(2, '0')}.webp`}
+                    alt={`Client ${i + 1}`}
+                    className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity flex-shrink-0"
+                  />
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
