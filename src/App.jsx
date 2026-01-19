@@ -102,33 +102,11 @@ function Navigation() {
   )
 }
 
-// Client logos with links
-const clientLogos = [
-  { name: 'BlueDot Impact', logo: '/images/logos/logo-01.webp', url: 'https://bluedot.org/' },
-  { name: 'GiveDirectly', logo: '/images/logos/logo-02.webp', url: 'https://www.givedirectly.org/' },
-  { name: 'Open Philanthropy', logo: '/images/logos/logo-03.webp', url: 'https://www.openphilanthropy.org/' },
-  { name: '80,000 Hours', logo: '/images/logos/logo-04.webp', url: 'https://80000hours.org/' },
-  { name: 'Founders Pledge', logo: '/images/logos/logo-05.webp', url: 'https://founderspledge.com/' },
-  { name: 'Longview Philanthropy', logo: '/images/logos/logo-06.webp', url: 'https://www.longview.org/' },
-  { name: 'One for the World', logo: '/images/logos/logo-07.webp', url: 'https://www.1fortheworld.org/' },
-  { name: 'Charity Entrepreneurship', logo: '/images/logos/logo-08.webp', url: 'https://www.charityentrepreneurship.com/' },
-  { name: 'Animal Charity Evaluators', logo: '/images/logos/logo-09.webp', url: 'https://animalcharityevaluators.org/' },
-  { name: 'The Humane League', logo: '/images/logos/logo-10.webp', url: 'https://thehumaneleague.org/' },
-  { name: 'Epoch AI', logo: '/images/logos/logo-11.webp', url: 'https://epochai.org/' },
-  { name: 'Asimov Press', logo: '/images/logos/logo-12.webp', url: 'https://www.asimov.press/' },
-  { name: 'Legal Impact for Chickens', logo: '/images/logos/logo-13.webp', url: 'https://www.legalimpactforchickens.org/' },
-  { name: 'Rethink Priorities', logo: '/images/logos/logo-14.webp', url: 'https://rethinkpriorities.org/' },
-  { name: 'GiveWell', logo: '/images/logos/logo-15.webp', url: 'https://www.givewell.org/' },
-  { name: 'Center for AI Safety', logo: '/images/logos/logo-16.webp', url: 'https://www.safe.ai/' },
-  { name: 'Future of Life Institute', logo: '/images/logos/logo-17.webp', url: 'https://futureoflife.org/' },
-  { name: 'Effective Giving', logo: '/images/logos/logo-18.webp', url: 'https://effectivegiving.org/' },
-  { name: 'HealthLearn', logo: '/images/logos/logo-19.webp', url: 'https://healthlearn.com/' },
-  { name: 'Animal Outlook', logo: '/images/logos/logo-20.webp', url: 'https://animaloutlook.org/' },
-  { name: 'Mercy For Animals', logo: '/images/logos/logo-21.webp', url: 'https://mercyforanimals.org/' },
-  { name: 'The Good Food Institute', logo: '/images/logos/logo-22.webp', url: 'https://gfi.org/' },
-  { name: 'Wild Animal Initiative', logo: '/images/logos/logo-23.webp', url: 'https://www.wildanimalinitiative.org/' },
-  { name: 'Faunalytics', logo: '/images/logos/logo-24.webp', url: 'https://faunalytics.org/' },
-]
+// Client logos (displayed in order from original site)
+const clientLogos = [...Array(24)].map((_, i) => ({
+  name: `Client ${i + 1}`,
+  logo: `/images/logos/logo-${String(i + 1).padStart(2, '0')}.webp`
+}))
 
 // Hero Section
 function Hero() {
@@ -250,35 +228,21 @@ function Hero() {
             <div className="logo-marquee-container overflow-hidden py-4">
               <div className="logo-marquee flex gap-16 animate-marquee items-center">
                 {clientLogos.map((client, i) => (
-                  <a
+                  <img
                     key={i}
-                    href={client.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-shrink-0 hover:scale-110 transition-transform"
-                  >
-                    <img
-                      src={client.logo}
-                      alt={client.name}
-                      className="h-20 sm:h-24 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
-                    />
-                  </a>
+                    src={client.logo}
+                    alt={client.name}
+                    className="h-20 sm:h-24 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0"
+                  />
                 ))}
                 {/* Duplicate for seamless loop */}
                 {clientLogos.map((client, i) => (
-                  <a
+                  <img
                     key={`dup-${i}`}
-                    href={client.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-shrink-0 hover:scale-110 transition-transform"
-                  >
-                    <img
-                      src={client.logo}
-                      alt={client.name}
-                      className="h-20 sm:h-24 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
-                    />
-                  </a>
+                    src={client.logo}
+                    alt={client.name}
+                    className="h-20 sm:h-24 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0"
+                  />
                 ))}
               </div>
             </div>
@@ -475,7 +439,7 @@ function Results() {
       quote: "Since working with Good Impressions, we have recruited participants from orgs like OpenAI, WHO, and Meta; scaled from one test campaign to three continuously running campaigns.",
       author: 'Li-Lian Ang',
       role: 'Product Manager',
-      avatar: '/images/avatars/avatar-11.webp'
+      avatar: '/images/avatars/li-lian-ang.webp'
     },
     {
       metric: '99%',
@@ -486,7 +450,7 @@ function Results() {
       quote: "Good Impressions successfully recruited several factory-farming whistleblowers. Best of all, they did it at 1% of the cost of the method we normally use.",
       author: 'Alene Anello',
       role: 'Founder',
-      avatar: '/images/avatars/avatar-12.webp'
+      avatar: '/images/avatars/alene-anello.webp'
     },
     {
       metric: '€10K+',
@@ -497,7 +461,7 @@ function Results() {
       quote: "Your help here was immensely valuable. You potentially saved us 10s of thousands of Euros.",
       author: 'Sebastian Becker',
       role: 'Fund Manager',
-      avatar: '/images/avatars/avatar-13.webp'
+      avatar: '/images/avatars/sebastian-becker.webp'
     },
     {
       metric: '2-3x',
@@ -508,7 +472,7 @@ function Results() {
       quote: "Good Impressions managed to increase our social media followers by 2-3x on a small budget, and I was impressed with the quality of the people reached.",
       author: 'Jaime Sevilla',
       role: 'Director',
-      avatar: '/images/avatars/avatar-14.webp'
+      avatar: '/images/avatars/jaime-sevilla.webp'
     },
     {
       metric: '31',
@@ -519,7 +483,7 @@ function Results() {
       quote: "The campaign reached senior contacts at major synthesis companies globally, including the CTO of Macrogen and CEO of Microsynth.",
       author: 'Kirsten Engel',
       role: 'Strategic Partnerships',
-      avatar: '/images/avatars/avatar-15.webp'
+      avatar: '/images/avatars/kirsten-engel.webp'
     },
     {
       metric: '1,268',
@@ -530,7 +494,7 @@ function Results() {
       quote: "Advertising is looking like a promising channel to scale our impact. We're immediately scaling up with a second, larger campaign.",
       author: 'Karl Keefer',
       role: 'Director of Technology',
-      avatar: '/images/avatars/avatar-16.webp'
+      avatar: '/images/avatars/karl-keefer.webp'
     },
   ]
 
