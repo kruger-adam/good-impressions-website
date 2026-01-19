@@ -342,7 +342,7 @@ function Mission() {
           >
             <div className="relative">
               <img 
-                src="/images/avatars/founder.webp" 
+                src="/images/avatars/johnstuart-1.webp" 
                 alt="Johnstuart Winchell" 
                 className="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl object-cover shadow-xl"
               />
