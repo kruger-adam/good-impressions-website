@@ -260,7 +260,7 @@ function Hero() {
                     <img
                       src={client.logo}
                       alt={client.name}
-                      className="h-14 sm:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                      className="h-20 sm:h-24 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
                     />
                   </a>
                 ))}
@@ -276,7 +276,7 @@ function Hero() {
                     <img
                       src={client.logo}
                       alt={client.name}
-                      className="h-14 sm:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                      className="h-20 sm:h-24 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
                     />
                   </a>
                 ))}
