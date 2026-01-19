@@ -110,8 +110,8 @@ function Hero() {
     offset: ['start start', 'end start']
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '15%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
     <section ref={ref} className="relative overflow-visible gradient-bg noise-overlay">
@@ -129,7 +129,7 @@ function Hero() {
         />
       </div>
 
-      <motion.div style={{ y, opacity }} className="relative pt-32 pb-40 px-6">
+      <motion.div style={{ y, opacity }} className="relative pt-32 pb-12 px-6">
         <div className="max-w-6xl mx-auto">
           {/* Badge */}
           <motion.div
@@ -206,23 +206,27 @@ function Hero() {
               See our work
             </a>
           </motion.div>
+        </div>
+      </motion.div>
 
-          {/* Trusted by logos */}
+      {/* Trusted by logos - Outside fade animation */}
+      <div className="relative px-6 pb-24">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
-            className="mt-20 pt-12 border-t border-ink/10"
+            className="pt-12 border-t border-ink/10"
           >
             <p className="text-slate text-sm uppercase tracking-wider mb-8">Proud to have worked with</p>
-            <div className="logo-marquee-container overflow-hidden">
-              <div className="logo-marquee flex gap-12 animate-marquee">
+            <div className="logo-marquee-container overflow-hidden py-4">
+              <div className="logo-marquee flex gap-16 animate-marquee items-center">
                 {[...Array(24)].map((_, i) => (
                   <img
                     key={i}
                     src={`/images/logos/logo-${String(i + 1).padStart(2, '0')}.webp`}
                     alt={`Client ${i + 1}`}
-                    className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity flex-shrink-0"
+                    className="h-14 sm:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0"
                   />
                 ))}
                 {/* Duplicate for seamless loop */}
@@ -231,14 +235,14 @@ function Hero() {
                     key={`dup-${i}`}
                     src={`/images/logos/logo-${String(i + 1).padStart(2, '0')}.webp`}
                     alt={`Client ${i + 1}`}
-                    className="h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity flex-shrink-0"
+                    className="h-14 sm:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0"
                   />
                 ))}
               </div>
             </div>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div
