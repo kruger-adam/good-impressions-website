@@ -114,7 +114,7 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   return (
-    <section ref={ref} className="min-h-screen relative overflow-hidden gradient-bg noise-overlay">
+    <section ref={ref} className="relative overflow-visible gradient-bg noise-overlay">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -129,7 +129,7 @@ function Hero() {
         />
       </div>
 
-      <motion.div style={{ y, opacity }} className="relative pt-32 pb-20 px-6">
+      <motion.div style={{ y, opacity }} className="relative pt-32 pb-40 px-6">
         <div className="max-w-6xl mx-auto">
           {/* Badge */}
           <motion.div
