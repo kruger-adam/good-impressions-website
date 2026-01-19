@@ -102,6 +102,34 @@ function Navigation() {
   )
 }
 
+// Client logos with links
+const clientLogos = [
+  { name: 'BlueDot Impact', logo: '/images/logos/logo-01.webp', url: 'https://bluedot.org/' },
+  { name: 'GiveDirectly', logo: '/images/logos/logo-02.webp', url: 'https://www.givedirectly.org/' },
+  { name: 'Open Philanthropy', logo: '/images/logos/logo-03.webp', url: 'https://www.openphilanthropy.org/' },
+  { name: '80,000 Hours', logo: '/images/logos/logo-04.webp', url: 'https://80000hours.org/' },
+  { name: 'Founders Pledge', logo: '/images/logos/logo-05.webp', url: 'https://founderspledge.com/' },
+  { name: 'Longview Philanthropy', logo: '/images/logos/logo-06.webp', url: 'https://www.longview.org/' },
+  { name: 'One for the World', logo: '/images/logos/logo-07.webp', url: 'https://www.1fortheworld.org/' },
+  { name: 'Charity Entrepreneurship', logo: '/images/logos/logo-08.webp', url: 'https://www.charityentrepreneurship.com/' },
+  { name: 'Animal Charity Evaluators', logo: '/images/logos/logo-09.webp', url: 'https://animalcharityevaluators.org/' },
+  { name: 'The Humane League', logo: '/images/logos/logo-10.webp', url: 'https://thehumaneleague.org/' },
+  { name: 'Epoch AI', logo: '/images/logos/logo-11.webp', url: 'https://epochai.org/' },
+  { name: 'Asimov Press', logo: '/images/logos/logo-12.webp', url: 'https://www.asimov.press/' },
+  { name: 'Legal Impact for Chickens', logo: '/images/logos/logo-13.webp', url: 'https://www.legalimpactforchickens.org/' },
+  { name: 'Rethink Priorities', logo: '/images/logos/logo-14.webp', url: 'https://rethinkpriorities.org/' },
+  { name: 'GiveWell', logo: '/images/logos/logo-15.webp', url: 'https://www.givewell.org/' },
+  { name: 'Center for AI Safety', logo: '/images/logos/logo-16.webp', url: 'https://www.safe.ai/' },
+  { name: 'Future of Life Institute', logo: '/images/logos/logo-17.webp', url: 'https://futureoflife.org/' },
+  { name: 'Effective Giving', logo: '/images/logos/logo-18.webp', url: 'https://effectivegiving.org/' },
+  { name: 'HealthLearn', logo: '/images/logos/logo-19.webp', url: 'https://healthlearn.com/' },
+  { name: 'Animal Outlook', logo: '/images/logos/logo-20.webp', url: 'https://animaloutlook.org/' },
+  { name: 'Mercy For Animals', logo: '/images/logos/logo-21.webp', url: 'https://mercyforanimals.org/' },
+  { name: 'The Good Food Institute', logo: '/images/logos/logo-22.webp', url: 'https://gfi.org/' },
+  { name: 'Wild Animal Initiative', logo: '/images/logos/logo-23.webp', url: 'https://www.wildanimalinitiative.org/' },
+  { name: 'Faunalytics', logo: '/images/logos/logo-24.webp', url: 'https://faunalytics.org/' },
+]
+
 // Hero Section
 function Hero() {
   const ref = useRef(null)
@@ -221,22 +249,36 @@ function Hero() {
             <p className="text-slate text-sm uppercase tracking-wider mb-8">Proud to have worked with</p>
             <div className="logo-marquee-container overflow-hidden py-4">
               <div className="logo-marquee flex gap-16 animate-marquee items-center">
-                {[...Array(24)].map((_, i) => (
-                  <img
+                {clientLogos.map((client, i) => (
+                  <a
                     key={i}
-                    src={`/images/logos/logo-${String(i + 1).padStart(2, '0')}.webp`}
-                    alt={`Client ${i + 1}`}
-                    className="h-14 sm:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0"
-                  />
+                    href={client.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-shrink-0 hover:scale-110 transition-transform"
+                  >
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="h-14 sm:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+                  </a>
                 ))}
                 {/* Duplicate for seamless loop */}
-                {[...Array(24)].map((_, i) => (
-                  <img
+                {clientLogos.map((client, i) => (
+                  <a
                     key={`dup-${i}`}
-                    src={`/images/logos/logo-${String(i + 1).padStart(2, '0')}.webp`}
-                    alt={`Client ${i + 1}`}
-                    className="h-14 sm:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0"
-                  />
+                    href={client.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-shrink-0 hover:scale-110 transition-transform"
+                  >
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="h-14 sm:h-16 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+                  </a>
                 ))}
               </div>
             </div>
