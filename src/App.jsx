@@ -474,7 +474,8 @@ function Results() {
       logo: '/images/logos/bluedot-impact.webp',
       quote: "Since working with Good Impressions, we have recruited participants from orgs like OpenAI, WHO, and Meta; scaled from one test campaign to three continuously running campaigns.",
       author: 'Li-Lian Ang',
-      role: 'Product Manager'
+      role: 'Product Manager',
+      avatar: '/images/avatars/avatar-11.webp'
     },
     {
       metric: '99%',
@@ -484,7 +485,8 @@ function Results() {
       logo: '/images/logos/lic.webp',
       quote: "Good Impressions successfully recruited several factory-farming whistleblowers. Best of all, they did it at 1% of the cost of the method we normally use.",
       author: 'Alene Anello',
-      role: 'Founder'
+      role: 'Founder',
+      avatar: '/images/avatars/avatar-12.webp'
     },
     {
       metric: '€10K+',
@@ -494,7 +496,8 @@ function Results() {
       logo: '/images/logos/give-directly.webp',
       quote: "Your help here was immensely valuable. You potentially saved us 10s of thousands of Euros.",
       author: 'Sebastian Becker',
-      role: 'Fund Manager'
+      role: 'Fund Manager',
+      avatar: '/images/avatars/avatar-13.webp'
     },
     {
       metric: '2-3x',
@@ -504,7 +507,8 @@ function Results() {
       logo: '/images/logos/epoch-ai.webp',
       quote: "Good Impressions managed to increase our social media followers by 2-3x on a small budget, and I was impressed with the quality of the people reached.",
       author: 'Jaime Sevilla',
-      role: 'Director'
+      role: 'Director',
+      avatar: '/images/avatars/avatar-14.webp'
     },
     {
       metric: '31',
@@ -514,7 +518,8 @@ function Results() {
       logo: '/images/logos/logo-05.webp',
       quote: "The campaign reached senior contacts at major synthesis companies globally, including the CTO of Macrogen and CEO of Microsynth.",
       author: 'Kirsten Engel',
-      role: 'Strategic Partnerships'
+      role: 'Strategic Partnerships',
+      avatar: '/images/avatars/avatar-15.webp'
     },
     {
       metric: '1,268',
@@ -524,7 +529,8 @@ function Results() {
       logo: '/images/logos/healthlearn.webp',
       quote: "Advertising is looking like a promising channel to scale our impact. We're immediately scaling up with a second, larger campaign.",
       author: 'Karl Keefer',
-      role: 'Director of Technology'
+      role: 'Director of Technology',
+      avatar: '/images/avatars/avatar-16.webp'
     },
   ]
 
@@ -567,9 +573,16 @@ function Results() {
               <p className="text-ink font-medium mb-3 leading-snug">{result.description}</p>
               <p className="text-slate text-sm italic mb-4 flex-grow">"{result.quote}"</p>
               <div className="flex items-center justify-between pt-4 border-t border-ink/10">
-                <div className="text-sm">
-                  <span className="font-medium text-ink">{result.author}</span>
-                  <span className="text-slate"> · {result.role}</span>
+                <div className="flex items-center gap-3">
+                  <img 
+                    src={result.avatar} 
+                    alt={result.author}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div className="text-sm">
+                    <span className="font-medium text-ink block">{result.author}</span>
+                    <span className="text-slate text-xs">{result.role}</span>
+                  </div>
                 </div>
                 <span className="text-xs bg-sage/20 text-sage px-2 py-1 rounded-full font-medium">
                   {result.cost}
