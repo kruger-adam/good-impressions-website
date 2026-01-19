@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import Careers from './pages/Careers'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
 
 // Navigation Component
 function Navigation() {
@@ -17,6 +21,7 @@ function Navigation() {
     { name: 'Results', href: '#results' },
     { name: 'Approach', href: '#approach' },
     { name: 'Testimonials', href: '#testimonials' },
+    { name: 'Careers', href: '/careers', isRoute: true },
   ]
 
   return (
@@ -29,24 +34,34 @@ function Navigation() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <img 
             src="/images/logos/gim-logo.webp" 
             alt="Good Impressions" 
             className="h-10 group-hover:scale-105 transition-transform"
           />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-slate hover:text-terracotta transition-colors font-medium text-sm tracking-wide"
-            >
-              {link.name}
-            </a>
+            link.isRoute ? (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="text-slate hover:text-terracotta transition-colors font-medium text-sm tracking-wide"
+              >
+                {link.name}
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-slate hover:text-terracotta transition-colors font-medium text-sm tracking-wide"
+              >
+                {link.name}
+              </a>
+            )
           ))}
           <a
             href="#contact"
@@ -78,14 +93,25 @@ function Navigation() {
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-ink text-lg font-medium py-2"
-                >
-                  {link.name}
-                </a>
+                link.isRoute ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-ink text-lg font-medium py-2"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-ink text-lg font-medium py-2"
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
               <a
                 href="#contact"
@@ -1066,18 +1092,18 @@ function Footer() {
     <footer className="py-12 px-6 bg-ink text-cream border-t border-white/10">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <img 
               src="/images/logos/gim-logo.webp" 
               alt="Good Impressions" 
               className="h-8 invert"
             />
-          </div>
+          </Link>
 
           <div className="flex items-center gap-6 text-sm text-cream/60">
-            <a href="https://www.goodimpressionsmedia.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Privacy Policy</a>
-            <a href="https://www.goodimpressionsmedia.com/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Terms</a>
-            <a href="https://www.goodimpressionsmedia.com/careers" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">Careers</a>
+            <Link to="/privacy" className="hover:text-cream transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-cream transition-colors">Terms</Link>
+            <Link to="/careers" className="hover:text-cream transition-colors">Careers</Link>
           </div>
 
           <p className="text-sm text-cream/40">
@@ -1090,7 +1116,7 @@ function Footer() {
 }
 
 // Main App
-function App() {
+function HomePage() {
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -1105,6 +1131,19 @@ function App() {
       <Contact />
       <Footer />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
