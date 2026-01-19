@@ -30,12 +30,11 @@ function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-terracotta rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-            <span className="font-display text-white text-lg font-semibold">G</span>
-          </div>
-          <span className="font-display text-xl font-semibold text-ink hidden sm:block">
-            Good Impressions
-          </span>
+          <img 
+            src="/images/logos/gim-logo.webp" 
+            alt="Good Impressions" 
+            className="h-10 group-hover:scale-105 transition-transform"
+          />
         </a>
 
         {/* Desktop Nav */}
@@ -216,17 +215,25 @@ function Hero() {
             className="mt-20 pt-12 border-t border-ink/10"
           >
             <p className="text-slate text-sm uppercase tracking-wider mb-6">Proud to have worked with</p>
-            <div className="flex flex-wrap items-center gap-8 opacity-60">
-              {['BlueDot Impact', 'Open Philanthropy', 'GiveDirectly', 'Epoch AI', 'One for the World'].map((name, i) => (
-                <motion.div
-                  key={name}
+            <div className="flex flex-wrap items-center gap-8">
+              {[
+                { name: 'BlueDot Impact', src: '/images/logos/bluedot-impact.webp' },
+                { name: 'Open Philanthropy', src: '/images/logos/open-phil.webp' },
+                { name: 'GiveDirectly', src: '/images/logos/give-directly.webp' },
+                { name: 'Epoch AI', src: '/images/logos/epoch-ai.webp' },
+                { name: 'One for the World', src: '/images/logos/one-for-the-world.webp' },
+                { name: '80,000 Hours', src: '/images/logos/80000-hours.png' },
+              ].map((logo, i) => (
+                <motion.img
+                  key={logo.name}
+                  src={logo.src}
+                  alt={logo.name}
                   initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 0.7, y: 0 }}
+                  whileHover={{ opacity: 1 }}
                   transition={{ delay: 1.3 + i * 0.1 }}
-                  className="font-display text-lg text-ink/70"
-                >
-                  {name}
-                </motion.div>
+                  className="h-8 sm:h-10 object-contain grayscale hover:grayscale-0 transition-all"
+                />
               ))}
             </div>
           </motion.div>
@@ -359,31 +366,31 @@ function Results() {
   const results = [
     {
       metric: '265',
-      unit: '',
-      description: 'AI safety course participants recruited from frontier AI companies',
+      description: 'AI safety course participants recruited from frontier AI companies, FAANG, and top research organizations',
       cost: '$261 each',
-      client: 'BlueDot Impact'
+      client: 'BlueDot Impact',
+      logo: '/images/logos/bluedot-impact.webp'
     },
     {
       metric: '99%',
-      unit: '',
       description: 'Cost reduction for animal cruelty whistleblower recruitment',
       cost: '$706 vs $100,000',
-      client: 'Legal Impact for Chickens'
-    },
-    {
-      metric: '€10K+',
-      unit: '',
-      description: 'Saved by identifying non-counterfactual ad spend',
-      cost: '3-hour audit',
-      client: 'Effective Giving'
+      client: 'Legal Impact for Chickens',
+      logo: '/images/logos/lic.webp'
     },
     {
       metric: '1,268',
-      unit: '',
-      description: 'Course registrants for healthcare training',
+      description: 'Course registrants for healthcare training program',
       cost: '$0.22 each',
-      client: 'HealthLearn'
+      client: 'HealthLearn',
+      logo: '/images/logos/healthlearn.webp'
+    },
+    {
+      metric: '3x',
+      description: 'Growth rate increase for newsletter subscribers who open emails at higher rates than organic',
+      cost: 'Small budget',
+      client: 'Asimov Press',
+      logo: '/images/logos/asimov-press.webp'
     },
   ]
 
@@ -419,9 +426,11 @@ function Results() {
                     {result.metric}
                   </span>
                 </div>
-                <span className="text-xs uppercase tracking-wider text-slate bg-cream px-3 py-1 rounded-full">
-                  {result.client}
-                </span>
+                <img 
+                  src={result.logo} 
+                  alt={result.client}
+                  className="h-8 object-contain opacity-70"
+                />
               </div>
               <p className="text-ink text-lg mb-4 leading-relaxed">{result.description}</p>
               <div className="flex items-center gap-2 text-sage font-medium">
@@ -526,25 +535,33 @@ function Testimonials() {
       quote: "Good Impressions is as good as it gets. They helped us develop a targeted LinkedIn whistleblower recruitment campaign which connected us with dozens of employees as part of an advocacy campaign.",
       author: "Jonas Vollmer",
       role: "COO",
-      org: "Longview Philanthropy"
+      org: "Longview Philanthropy",
+      avatar: "/images/avatars/avatar-01.webp",
+      logo: "/images/logos/longview.webp"
     },
     {
       quote: "In a few months Good Impressions helped us build an acquisition channel we can turn on and off as needed, giving us control over our growth. This has become a permanent part of our funding proposals.",
       author: "Patrick Gruban",
       role: "COO",
-      org: "80,000 Hours"
+      org: "80,000 Hours",
+      avatar: "/images/avatars/avatar-02.webp",
+      logo: "/images/logos/80000-hours.png"
     },
     {
       quote: "To spend such a small amount of money and grow this rapidly is incredible. We tripled our growth rate of newsletter subscribers, and they actually open our emails at rates higher than our organic audience.",
       author: "Niko McCarty",
       role: "Founding Editor",
-      org: "Asimov Press"
+      org: "Asimov Press",
+      avatar: "/images/avatars/avatar-03.webp",
+      logo: "/images/logos/asimov-press.webp"
     },
     {
       quote: "Since the pandemic, we hadn't found a sustainable avenue for opening new chapters, but our first Good Impressions campaign led to 7 new chapters. Ads are now our primary channel for chapter acquisition.",
       author: "Emma Cameron",
       role: "COO",
-      org: "One for the World"
+      org: "One for the World",
+      avatar: "/images/avatars/avatar-04.webp",
+      logo: "/images/logos/one-for-the-world.webp"
     },
   ]
 
@@ -585,11 +602,23 @@ function Testimonials() {
               <blockquote className="font-display text-2xl sm:text-3xl md:text-4xl font-normal leading-relaxed mb-8 text-cream/90">
                 "{testimonials[activeIndex].quote}"
               </blockquote>
-              <div className="flex flex-col items-center">
-                <span className="font-medium text-lg">{testimonials[activeIndex].author}</span>
-                <span className="text-cream/60">
-                  {testimonials[activeIndex].role}, {testimonials[activeIndex].org}
-                </span>
+              <div className="flex flex-col items-center gap-4">
+                <img 
+                  src={testimonials[activeIndex].avatar} 
+                  alt={testimonials[activeIndex].author}
+                  className="w-16 h-16 rounded-full object-cover border-2 border-terracotta/30"
+                />
+                <div className="text-center">
+                  <span className="font-medium text-lg block">{testimonials[activeIndex].author}</span>
+                  <span className="text-cream/60">
+                    {testimonials[activeIndex].role}, {testimonials[activeIndex].org}
+                  </span>
+                </div>
+                <img 
+                  src={testimonials[activeIndex].logo} 
+                  alt={testimonials[activeIndex].org}
+                  className="h-6 object-contain opacity-50 mt-2"
+                />
               </div>
             </motion.div>
           </AnimatePresence>
@@ -711,10 +740,11 @@ function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-terracotta rounded-full flex items-center justify-center">
-              <span className="font-display text-white text-sm font-semibold">G</span>
-            </div>
-            <span className="font-display text-lg">Good Impressions</span>
+            <img 
+              src="/images/logos/gim-logo.webp" 
+              alt="Good Impressions" 
+              className="h-8 invert"
+            />
           </div>
 
           <div className="flex items-center gap-6 text-sm text-cream/60">
