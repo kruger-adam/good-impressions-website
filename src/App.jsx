@@ -1096,7 +1096,7 @@ function Footer() {
             <img 
               src="/images/logos/gim-logo.webp" 
               alt="Good Impressions" 
-              className="h-8 invert"
+              className="h-8 brightness-0 invert"
             />
           </Link>
 

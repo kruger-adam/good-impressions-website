@@ -37,7 +37,7 @@ export function PageFooter() {
             <img 
               src="/images/logos/gim-logo.webp" 
               alt="Good Impressions" 
-              className="h-8 invert"
+              className="h-8 brightness-0 invert"
             />
           </Link>
           <div className="flex items-center gap-6 text-sm text-cream/60">
