@@ -1089,7 +1089,7 @@ function Contact() {
 // Footer
 function Footer() {
   return (
-    <footer className="py-12 px-6 bg-ink text-cream border-t border-white/10">
+    <footer className="py-12 px-6 bg-cream border-t border-ink/10">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <Link to="/" className="flex items-center gap-3">
@@ -1100,13 +1100,13 @@ function Footer() {
             />
           </Link>
 
-          <div className="flex items-center gap-6 text-sm text-cream/60">
-            <Link to="/privacy" className="hover:text-cream transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-cream transition-colors">Terms</Link>
-            <Link to="/careers" className="hover:text-cream transition-colors">Careers</Link>
+          <div className="flex items-center gap-6 text-sm text-slate">
+            <Link to="/privacy" className="hover:text-terracotta transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-terracotta transition-colors">Terms</Link>
+            <Link to="/careers" className="hover:text-terracotta transition-colors">Careers</Link>
           </div>
 
-          <p className="text-sm text-cream/40">
+          <p className="text-sm text-slate/60">
             © {new Date().getFullYear()} Good Impressions Media
           </p>
         </div>
