@@ -5,6 +5,19 @@ import Careers from './pages/Careers'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 
+// Scroll Progress Indicator
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll()
+  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1])
+
+  return (
+    <motion.div
+      style={{ scaleX }}
+      className="fixed top-0 left-0 right-0 h-1 bg-terracotta origin-left z-[60]"
+    />
+  )
+}
+
 // Navigation Component
 function Navigation() {
   const [scrolled, setScrolled] = useState(false)
@@ -1119,6 +1132,7 @@ function Footer() {
 function HomePage() {
   return (
     <div className="min-h-screen">
+      <ScrollProgress />
       <Navigation />
       <Hero />
       <Mission />
